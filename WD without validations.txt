@@ -1,0 +1,165 @@
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+
+
+
+public class WebDriverDemo {
+	
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+
+		System.setProperty("webdriver.chrome.driver", "D:/chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.get("https://demo.opencart.com/");
+		String title = "Your Store";
+		if(driver.getTitle().equals(title))
+		{
+			System.out.println("Title: Verified");
+		}
+		else
+		{
+			System.out.println("Title: Not verified");
+		}
+		
+		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+		
+		//driver.navigate().to("https://demo.opencart.com/index.php?route=account/register");
+		driver.findElement(By.className("caret")).click();
+		System.out.println("Clicked: My Account");
+		
+		driver.findElement(By.cssSelector(".dropdown-menu.dropdown-menu-right>li>a")).click();
+		System.out.println("Clicked: Register");
+		
+		//Fill up the fields
+		driver.findElement(By.id("input-firstname")).sendKeys("Harsha");
+		driver.findElement(By.id("input-lastname")).sendKeys("banduu");
+		driver.findElement(By.name("email")).sendKeys("harhsphoa@gmail.com");
+		driver.findElement(By.cssSelector("#input-telephone")).sendKeys("9874563210");
+		driver.findElement(By.xpath(".//*[@id='input-password']")).sendKeys("Bandu@123");
+		driver.findElement(By.cssSelector("#input-confirm")).sendKeys("Bandu@123");
+		
+		boolean sub = driver.findElement(By.xpath(".//*[@id='content']/form/fieldset[3]/div/label")).isDisplayed();
+		if(sub==true)
+		{
+			System.out.println("Subscribe radio button: Verified");
+		}
+		else
+		{
+			System.out.println("Radio button is not present");
+		}
+		
+		driver.findElement(By.xpath(".//*[@id='content']/form/fieldset[3]/div/div/label[2]")).click();
+		System.out.println("Clicked: No button");
+		
+		driver.findElement(By.name("agree")).click();
+		System.out.println("Clicked: checkbox");
+		
+		driver.findElement(By.xpath(".//*[@id='content']/form/div/div/input[2]")).click();
+		System.out.println("Clicked: Continue button");
+		
+		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+		
+		if(driver.getPageSource().contains("Your Account Has Been Created!"))
+		{
+			System.out.println("Heading: Verified, Passed");
+		}
+		else
+		{
+			System.out.println("Heading: Not Verified, Failed");
+		}
+		
+		//Click on Phones & PDA's
+		driver.findElement(By.xpath(".//*[@id='menu']/div[2]/ul/li[6]/a")).click();
+		System.out.println("Clicked: Phones & PDA's");
+		
+		driver.findElement(By.cssSelector(".img-responsive")).click();
+		System.out.println("Clicked: HTC Touch HD");
+		
+		if(driver.getPageSource().contains("HTC Touch HD"))
+		{
+			System.out.println("HTC Touch HD: Verified, Passed");
+		}
+		else
+		{
+			System.out.println("HTC Touch HD: Not Verified, Failed");
+		}
+		
+		driver.navigate().back();
+		System.out.println("Navigated back");
+		
+		driver.findElement(By.xpath(".//*[@id='content']/div[2]/div[1]/div/div[2]/div[2]/button[1]")).click();
+		System.out.println("Clicked: Add to Cart");
+		
+		if(driver.getPageSource().contains(" Success: You have added HTC Touch HD to your shopping cart!"))
+		{
+			System.out.println("Message: Verified, Passed");
+		}
+		else
+		{
+			System.out.println("Message: Not Verified, Failed");
+		}
+		
+		driver.findElement(By.xpath("html/body/footer/div/div/div[3]/ul/li[1]/a")).click();
+		System.out.println("Clicked: Brands");
+		
+		if(driver.getTitle().equals("Find Your Favorite Brand"))
+		{
+			System.out.println("Brand Title: Verified, Passed");
+		}
+		else
+		{
+			System.out.println("Brand Title: Not Verified, Failed");
+		}
+		
+		driver.findElement(By.xpath(".//*[@id='content']/div[2]/div")).click();
+		if(driver.getTitle().equals("Canon"))
+		{
+			System.out.println("Canon Title: Verified, Passed");
+		}
+		else
+		{
+			System.out.println("Canon Title: Not verified, Failed");
+		}
+		
+		driver.findElement(By.xpath(".//*[@id='content']/div[2]/div/div/div[2]/div[2]/button[2]")).click();
+		System.out.println("Clicked: Add to wishlist");
+		
+		String msg =  "Success: You have added Canon EOS 5D to your wish list!";
+		if(driver.getPageSource().contains(msg))
+		{
+			System.out.println("Message: Verified, Passed");
+		}
+		else
+		{
+			System.out.println("Message: Not Verified, Failed");
+		}
+		
+		driver.findElement(By.cssSelector(".list-unstyled>li>a")).click();
+		System.out.println("Clicked: Wishlist");
+		
+		if(driver.getTitle().equals("My Wish List"))
+		{
+			System.out.println("Title: Verified, Passed");
+		}
+		else
+		{
+			System.out.println("Title: Not Verified, Failed");
+		}
+		
+		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+		driver.findElement(By.className("btn btn-primary")).click();
+		
+		driver.close();
+		
+		
+		
+		
+			
+		
+		
+	}
+}
