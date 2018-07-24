@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="https://demo.opencart.com/" />
+<title>ide</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">ide</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+</tr>
+<!--Open demo.opencart.com-->
+<tr>
+	<td>verifyTitle</td>
+	<td>Your Store</td>
+	<td></td>
+</tr>
+<!--Verifying title -->
+<tr>
+	<td>type</td>
+	<td>name=search</td>
+	<td>windows</td>
+</tr>
+<!--search for  "windows" -->
+<tr>
+	<td>clickAndWait</td>
+	<td>xpath=(//button[@type='button'])[4]</td>
+	<td></td>
+</tr>
+<!--Click the search button-->
+<tr>
+	<td>assertTitle</td>
+	<td>Search - windows</td>
+	<td></td>
+</tr>
+<!--Validating the title-->
+<tr>
+	<td>select</td>
+	<td>name=category_id</td>
+	<td>label=regexp:\s+PC</td>
+</tr>
+<!--select "PC" from drop down-->
+<tr>
+	<td>click</td>
+	<td>name=sub_category</td>
+	<td></td>
+</tr>
+<!--Tick "Search in subcategories"-->
+<tr>
+	<td>clickAndWait</td>
+	<td>id=button-search</td>
+	<td></td>
+</tr>
+<!--Click the "search" button-->
+<tr>
+	<td>verifyTextPresent</td>
+	<td>product that matches the search criteria</td>
+	<td></td>
+</tr>
+<!--Verify if  "product that macthes the search criteria" matches-->
+<tr>
+	<td>select</td>
+	<td>name=category_id</td>
+	<td>label=regexp:\s+Monitors</td>
+</tr>
+<!--choose option "Monitors" from drop down-->
+<tr>
+	<td>click</td>
+	<td>id=description</td>
+	<td></td>
+</tr>
+<!--click on "Search in product description"-->
+<tr>
+	<td>clickAndWait</td>
+	<td>id=button-search</td>
+	<td></td>
+</tr>
+<!--click the button "search"-->
+<tr>
+	<td>assertTextPresent</td>
+	<td>Apple Cinema 30</td>
+	<td></td>
+</tr>
+<!--validating text "Apple Cinema 30" -->
+<tr>
+	<td>click</td>
+	<td>css=div.button-group &gt; button[type=&quot;button&quot;]</td>
+	<td></td>
+</tr>
+<!--Click "Add to cart"-->
+<tr>
+	<td>click</td>
+	<td>css=div.btn-group &gt; button.btn.btn-default</td>
+	<td></td>
+</tr>
+<!--Click on "add to wishlist"-->
+<tr>
+	<td>verifyAlertNotPresent</td>
+	<td>You must login or create an account to save Apple Cinema 30&quot; to your wish list</td>
+	<td></td>
+</tr>
+<!--Verifying if alert is displayed on the page-->
+<!--close window-->
+</tbody></table>
+</body>
+</html>
